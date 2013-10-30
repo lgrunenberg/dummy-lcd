@@ -28,8 +28,8 @@ DUMMY LCD PINOUT
 26	D13
 27	D14
 28	D15
-29	D16
-30	D17
+29	D16       Not Used
+30	D17       Not Used
 31	/RDX			Read Strobe
 32	/WRX			Write Strobe
 33	/DCX			Register Select (1 = Data, 0 = Command)
