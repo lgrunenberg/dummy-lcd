@@ -1,0 +1,41 @@
+DUMMY LCD PINOUT
+
+1	NC				Not connected
+2	NC				Not connected
+3	PULLUP TO VCC	?
+4	NC				Not connected
+5	GND
+6	GND
+7	NC
+8	BL_A			Backlight Anode (20mA ~ 18.5V)
+9	BL_A				
+10	BL_K			Backlight Cathode
+11	BL_K
+12	/CS				Chip Select
+13	D0
+14	D1
+15	D2
+16	D3
+17	D4
+18	D5
+19	D6
+20	D7
+21	D8
+22	D9
+23	D10
+24	D11
+25	D12
+26	D13
+27	D14
+28	D15
+29	D16
+30	D17
+31	/RDX			Read Strobe
+32	/WRX			Write Strobe
+33	/DCX			Register Select (1 = Data, 0 = Command)
+34	/RES			Reset
+35	VCC				1.8V - 3.0V (Maximum 3.3V)
+36	VCC
+37	NC
+38	NC
+39	NC
