@@ -10,11 +10,6 @@ extern "C" {
 }
 
 
-#define resetPin 40
-#define wrPin    41
-#define csPin    38
-#define rsPin    39
-
 
 int cursorX, cursorY, cursorFg, cursorBg;
 
@@ -37,7 +32,7 @@ byte dummylcd::swapBits(byte b) {
 // Write a Command to the Display Port
 
 void dummylcd::writeCommand(byte data) {
-  digitalWrite(rsPin, LOW);
+  PORTG &= ~(1<<2);
 
   PORTA = data;
 
@@ -49,7 +44,7 @@ void dummylcd::writeCommand(byte data) {
 // Write a Data Word to the Display Port
 
 void dummylcd::writeData(int data) {
-  digitalWrite(rsPin, HIGH);
+  PORTG |= (1<<2);
 
   PORTA = data;
   PORTC = swapBits(data >> 8);
@@ -67,19 +62,32 @@ void dummylcd::initLcd(void) {
   PORTC = 0x00;
   DDRC = 0xFF;
   DDRA = 0xFF;
-  digitalWrite(csPin, LOW);
-  digitalWrite(rsPin, LOW);
-  digitalWrite(resetPin, LOW);
-  digitalWrite(wrPin, LOW);
-  pinMode(csPin, OUTPUT);
-  pinMode(rsPin, OUTPUT);
-  pinMode(resetPin, OUTPUT);
-  pinMode(wrPin, OUTPUT);
-  digitalWrite(resetPin, HIGH);
+  
+  // set CS pin LOW
+  
+  PORTG &= ~(1<<0);
+  DDRG |= (1<<0);
+  
+  // set RS pin LOW
+  
+  PORTG &= ~(1<<2);
+  DDRG |= (1<<2);
+  
+  // set RESET pin LOW
+  
+  PORTG &= ~(1<<1);
+  DDRG |= (1<<1);
+  
+  // set WR pin LOW
+  
+  PORTD &= ~(1<<7);
+  DDRD |= (1<<7);
+  
+  PORTG |= (1<<1);
   delay(5);
-  digitalWrite(resetPin, LOW);
+  PORTG &= ~(1<<1);
   delay(15);
-  digitalWrite(resetPin, HIGH);
+  PORTG |= (1<<1);
   delay(100);
 
 
