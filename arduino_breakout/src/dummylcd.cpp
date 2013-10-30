@@ -4,11 +4,9 @@ extern "C" {
 
 
 #include <inttypes.h>
-
 #include <avr/pgmspace.h>
 
 }
-
 
 
 int cursorX, cursorY, cursorFg, cursorBg;
